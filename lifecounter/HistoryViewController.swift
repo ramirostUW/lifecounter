@@ -13,6 +13,7 @@ class HistoryViewController: UIViewController {
     var receivedPhrase = String()
     
     var gameHistory = [String]()
+    var lifeTotals = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,14 @@ class HistoryViewController: UIViewController {
             textLabel.textAlignment = .center
             historyStackView.addArrangedSubview(textLabel)
         }
+        
         // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newVC: ViewController = segue.destination as! ViewController
         newVC.previousHistory = gameHistory;
+        newVC.lifeTotals = lifeTotals;
         
     }
     

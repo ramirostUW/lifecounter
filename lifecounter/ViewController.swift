@@ -10,6 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     
     var previousHistory = [String]()
+    var lifeTotals = [Int]()
+    
+    
     
     @IBOutlet weak var addPlayerBtn: UIButton!
     @IBOutlet weak var historyView: UIStackView!
@@ -92,6 +95,35 @@ class ViewController: UIViewController {
         p6StackView.isHidden = true
         p7StackView.isHidden = true
         p8StackView.isHidden = true
+        if(lifeTotals.count > 0){
+            currentp1Life = lifeTotals[0]
+            currentp2Life = lifeTotals[1]
+            currentp3Life = lifeTotals[2]
+            currentp4Life = lifeTotals[3]
+            
+            if(lifeTotals.count >= 5)
+            {
+                currentp5Life = lifeTotals[4]
+                p5StackView.isHidden = false;
+            }
+            if(lifeTotals.count >= 6)
+            {
+                currentp6Life = lifeTotals[5]
+                p6StackView.isHidden = false;
+            }
+            if(lifeTotals.count >= 7)
+            {
+                currentp7Life = lifeTotals[6]
+                p7StackView.isHidden = false
+            }
+            if(lifeTotals.count >= 8)
+            {
+                currentp8Life = lifeTotals[7]
+                p8StackView.isHidden = false
+            }
+            currPlayerCount = lifeTotals.count
+        }
+
         
         p1LifeInput.keyboardType = UIKeyboardType.numberPad
         p2LifeInput.keyboardType = UIKeyboardType.numberPad
@@ -119,7 +151,20 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newVC: HistoryViewController = segue.destination as! HistoryViewController
         newVC.gameHistory = historyRecords;
-        
+        var lifeTotalsPreservation = [currentp1Life, currentp2Life, currentp3Life, currentp4Life]
+        if(currPlayerCount >= 5){
+            lifeTotalsPreservation.append(currentp5Life)
+        }
+        if(currPlayerCount >= 6){
+            lifeTotalsPreservation.append(currentp6Life)
+        }
+        if(currPlayerCount >= 7){
+            lifeTotalsPreservation.append(currentp7Life)
+        }
+        if(currPlayerCount >= 8){
+            lifeTotalsPreservation.append(currentp8Life)
+        }
+        newVC.lifeTotals = lifeTotalsPreservation
     }
     
     func updateCountsOnScreen(_ playerNum: Int, _ interval: Int){
