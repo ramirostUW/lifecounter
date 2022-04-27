@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="lifecounter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RuX-rR-92j">
-                                <rect key="frame" x="20" y="155.5" width="130" height="165"/>
+                                <rect key="frame" x="20" y="186.5" width="130" height="165"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Thb-tY-SY7">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="82.5"/>
@@ -204,7 +204,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fbf-uI-Y67">
-                                <rect key="frame" x="264" y="155.5" width="130" height="165"/>
+                                <rect key="frame" x="264" y="186.5" width="130" height="165"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3AS-9S-1ea">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="82.5"/>
@@ -391,10 +391,18 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8QF-xX-64m">
-                                <rect key="frame" x="160.5" y="64" width="93.5" height="51.5"/>
+                                <rect key="frame" x="160.5" y="64" width="93.5" height="82.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzM-fK-znf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpw-dd-Qq0">
                                         <rect key="frame" x="0.0" y="0.0" width="93.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="History"/>
+                                        <connections>
+                                            <segue destination="0fH-ZV-zTl" kind="presentation" id="jdI-j7-amF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzM-fK-znf">
+                                        <rect key="frame" x="0.0" y="31" width="93.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Add Player" titleAlignment="center"/>
                                         <connections>
@@ -402,7 +410,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYr-ds-yaz">
-                                        <rect key="frame" x="0.0" y="31" width="93.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="62" width="93.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -422,6 +430,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addPlayerBtn" destination="XzM-fK-znf" id="YhL-GL-Bou"/>
                         <outlet property="loserLabel" destination="bYr-ds-yaz" id="JJb-fJ-cJm"/>
                         <outlet property="p1LifeInput" destination="xXU-eB-sYB" id="N8m-qk-Ppc"/>
                         <outlet property="p1LifeLabel" destination="lg8-F4-m7C" id="q3j-2r-LU0"/>
@@ -468,6 +477,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="7.3660714285714279"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="XyU-ah-UQ7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NEf-T0-w8C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="0fH-ZV-zTl" customClass="HistoryViewController" customModule="lifecounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zmk-CQ-nHy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwh-dl-AP4">
+                                <rect key="frame" x="150" y="64" width="114.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back to Game" titleAlignment="center"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="ZWe-3f-bUR"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iDj-w6-aKe">
+                                <rect key="frame" x="157.5" y="135" width="99" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3q-yC-JFZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="99" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longer Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhg-QL-d3i">
+                                        <rect key="frame" x="0.0" y="20.5" width="99" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JkK-I7-y2x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pwh-dl-AP4" firstAttribute="top" secondItem="JkK-I7-y2x" secondAttribute="top" constant="20" id="32a-jW-RkL"/>
+                            <constraint firstItem="iDj-w6-aKe" firstAttribute="centerX" secondItem="zmk-CQ-nHy" secondAttribute="centerX" id="9qc-U2-0Hq"/>
+                            <constraint firstItem="iDj-w6-aKe" firstAttribute="centerX" secondItem="zmk-CQ-nHy" secondAttribute="centerX" id="Far-2m-tpa"/>
+                            <constraint firstItem="iDj-w6-aKe" firstAttribute="centerX" secondItem="zmk-CQ-nHy" secondAttribute="centerX" id="J5A-h2-HFX"/>
+                            <constraint firstItem="Pwh-dl-AP4" firstAttribute="centerX" secondItem="zmk-CQ-nHy" secondAttribute="centerX" id="OS5-42-78T"/>
+                            <constraint firstItem="Pwh-dl-AP4" firstAttribute="centerX" secondItem="zmk-CQ-nHy" secondAttribute="centerX" id="ZJt-5a-C5r"/>
+                            <constraint firstItem="iDj-w6-aKe" firstAttribute="top" secondItem="Pwh-dl-AP4" secondAttribute="bottom" constant="40" id="cEN-Za-WIX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="historyStackView" destination="iDj-w6-aKe" id="ua1-aE-wpn"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="822" y="7"/>
         </scene>
     </scenes>
     <resources>

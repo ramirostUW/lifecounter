@@ -8,6 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var previousHistory = [String]()
+    
+    @IBOutlet weak var addPlayerBtn: UIButton!
+    @IBOutlet weak var historyView: UIStackView!
     @IBOutlet weak var p1StackView: UIStackView!
     @IBOutlet weak var p2StackView: UIStackView!
     
@@ -76,8 +81,13 @@ class ViewController: UIViewController {
 
     
     var currPlayerCount = 4;
+    var historyRecords : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        historyRecords.append(contentsOf: previousHistory)
+        if(historyRecords.count > 0){
+            addPlayerBtn.isEnabled = false;
+        }
         p5StackView.isHidden = true
         p6StackView.isHidden = true
         p7StackView.isHidden = true
@@ -106,7 +116,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let newVC: HistoryViewController = segue.destination as! HistoryViewController
+        newVC.gameHistory = historyRecords;
+        
+    }
+    
     func updateCountsOnScreen(_ playerNum: Int, _ interval: Int){
+        let originalLoserLabelText = loserLabel.text
         if(playerNum == 1){
             currentp1Life += interval
             if(currentp1Life <= 0){
@@ -201,6 +218,26 @@ class ViewController: UIViewController {
                     p8LifeLabel.text = String(currentp8Life)
                 }
         }
+        
+        var newHistoryRecord = "Player " + String(playerNum);
+        var labelInterval = interval;
+        if(interval < 0)
+        {
+            newHistoryRecord = newHistoryRecord + " lost "
+            labelInterval = interval  * -1;
+        }
+        else{
+            newHistoryRecord = newHistoryRecord + " gained "
+        }
+        newHistoryRecord = newHistoryRecord + String(labelInterval) + " life"
+        
+        historyRecords.append(newHistoryRecord)
+        if(originalLoserLabelText != loserLabel.text){
+            historyRecords.append(loserLabel.text!)
+        }
+        
+        addPlayerBtn.isEnabled = false;
+        
     }
 
     @IBAction func addPlayers(_ sender: Any){
